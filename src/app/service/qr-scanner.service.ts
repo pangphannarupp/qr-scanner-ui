@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController } from '@ionic/angular';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +15,10 @@ export class QrScannerService {
     private alertCtrl: AlertController
   ) { }
 
+  /*
+  * scan
+  * @usage      scan qr code
+  */
   scan(): Promise<any>{
     const testing = new Promise( (resolve) => {
       this.qrScanner.prepare().then((status: QRScannerStatus)=> {
@@ -43,16 +46,28 @@ export class QrScannerService {
     return testing;
   }
 
+  /*
+  * showCamera
+  * @usage      add camera qr code scanner into content
+  */
   private showCamera() {
     document.querySelector('ion-content').classList.add('cameraView');
     document.querySelector('ion-toolbar').classList.add('cameraView1');
   }
 
+  /*
+  * hideCamera
+  * @usage      remove camera qr code scanner from content
+  */
   private hideCamera() {
     document.querySelector('ion-content').classList.remove('cameraView');
     document.querySelector('ion-toolbar').classList.remove('cameraView1');
   }
 
+  /*
+  * lightOn
+  * @usage      show flash
+  */
   lightOn(){
     this.qrScanner.enableLight().then(result => {
       console.log(result);
@@ -61,6 +76,10 @@ export class QrScannerService {
     });
   }
 
+  /*
+  * lightOff
+  * @usage      hide flash
+  */
   lightOff(){
     this.qrScanner.disableLight().then(result => {
       console.log(result);
@@ -69,6 +88,10 @@ export class QrScannerService {
     });
   }
 
+  /*
+  * alert
+  * @usage      alert message of camera permission
+  */
   async alert(){
     const alert = await this.alertCtrl.create({
       header: 'Permission',

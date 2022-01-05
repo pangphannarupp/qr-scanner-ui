@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-import { AlertController } from '@ionic/angular';
 import { QrScannerService } from '../service/qr-scanner.service';
 
 @Component({
@@ -20,20 +17,22 @@ export class TestQrPage implements OnInit {
     private qrScannerService: QrScannerService,
   ) {  }
 
+  /*
+  * ngOnInit
+  * @uage     Open qr scanner when screen ready
+  */
   async ngOnInit() {
     this.qrScannerService.scan().then((result) => {
       console.log(result);
     });
   }
 
-  lightOn(){
-    this.qrScannerService.lightOn();
-  }
-
-  lightOff(){
-    this.qrScannerService.lightOff();
-  }
-
+  /*
+  * manageFlash
+  * @usage:   - hide/show flash
+  *           - change icon flash
+  *           - change guide flash
+  */
   manageFlash() {
     if(this.isFlashOn) {
       this.qrScannerService.lightOff();
