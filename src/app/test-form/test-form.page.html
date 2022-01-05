@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>testForm</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input [(ngModel)]="pin" placeholder="Please enter 6 numeric digits" type="tel"
+ #pinCheckFocus clear-input="true" maxlength="6" (ionChange) ="onKeyUp($event)"
+  ></ion-input>
+  <ion-button (click)="test()">Click</ion-button>
+</ion-content>

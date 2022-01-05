@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-title>Scan QR Code</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon color="white" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="content-footer">
+    <div class="content-up">
+      <p>When QRcode comes in area,<br />recognized automatically.</p>
+    </div>
+    <ion-button class="flash-button" fill="full" (click)="manageFlash()">
+      <ion-img class="flash" src="{{ '../../assets/img/' + flashImage + '.png' }}"></ion-img>
+    </ion-button>
+    <div class="content-bottom">
+      <p>{{ flashText }}</p>
+    </div>
+  </div>
+</ion-content>
