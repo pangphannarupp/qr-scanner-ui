@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController } from '@ionic/angular';
 
@@ -11,7 +10,6 @@ export class QrScannerService {
   scanSub: any;
   constructor(
     private qrScanner: QRScanner,
-    private route: Router,
     private alertCtrl: AlertController
   ) { }
 
